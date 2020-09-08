@@ -7,17 +7,26 @@
   {included_applications, []},
   {applications,
    [
-    nova,
     kernel,
-    stdlib
+    stdlib,
+    nova
    ]},
-  {env,[
-        %% Add application specific configuration here
-        {nova_applications, [
-                             %% Can be either an atom of the app or #{name => AppName, routes_file => Filepath}
+  {env,[ {kernel, [
+           {logger_level, debug}
+          ]},
+ {nova, [
+         {cowboy_configuration, #{
+                                  port => 8080
+                                 }},
+         {dev_mode, true},
+         {bootstrap_application, my_first_nov}, %% Bootstraps the application
+         {plugins, [
+                   ]}
+        ]},
 
-                            ]}
-       ]},
+{my_first_nov, [{nova_applications, [my_first_nov]}]}
+  %% Please change your app.src-file instead if you intend to add app-specific configurations
+]},
   {modules, []},
   {maintainers, []},
   {licenses, ["Apache 2.0"]},
