@@ -1,0 +1,25 @@
+%% -*- mode: erlang;erlang-indent-level: 4;indent-tabs-mode: nil -*-
+{application, my_first_nov,
+ [{description, "my_first_nov managed by Nova"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {mod, { my_first_nov_app, []}},
+  {included_applications, []},
+  {applications,
+   [
+    nova,
+    kernel,
+    stdlib
+   ]},
+  {env,[
+        %% Add application specific configuration here
+        {nova_applications, [
+                             %% Can be either an atom of the app or #{name => AppName, routes_file => Filepath}
+
+                            ]}
+       ]},
+  {modules, []},
+  {maintainers, []},
+  {licenses, ["Apache 2.0"]},
+  {links, []}
+ ]}.
